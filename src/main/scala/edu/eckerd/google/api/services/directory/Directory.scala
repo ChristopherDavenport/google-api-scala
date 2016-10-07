@@ -40,6 +40,7 @@ object Directory {
       apply(serviceAccountEmail, impersonator, credentialFilePath, applicationName, List(scope))
     }
 
+  @deprecated("Utilize Non-Magic Implementations", "0.1.1")
   def apply(): Directory = {
 
     val config = ConfigFactory.load().getConfig("google")
@@ -48,8 +49,6 @@ object Directory {
     val applicationName = config.getString("applicationName")
     val credentialFilePath = config.getString("credentialFilePath")
     val scope = ADMIN_DIRECTORY
-
-
     apply(serviceAccountEmail,  administratorEmail, credentialFilePath, applicationName, scope)
   }
 }
